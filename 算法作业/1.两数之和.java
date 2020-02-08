@@ -7,15 +7,15 @@
 // @lc code=start
 class Solution {
     public int[] twoSum(int[] nums, int target) {
-        int sec = 0;        
+        int sec = 0;
         for (int i = 0; i < nums.length; i++) {
-            sec = target - nums[i];            
+            sec = target - nums[i];
             for (int j = i+1; j < nums.length; j++) {
                 if (nums[j] == sec){
-                    return new int[]{i,j};        
+                    return new int[]{i,j};
                 }
             }
-        }        
+        }
         return null;
     }
 }
