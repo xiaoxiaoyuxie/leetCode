@@ -35,31 +35,21 @@
 // @lc code=start
 class Solution {
     public void merge(int[] nums1, int m, int[] nums2, int n) {
-        if (m == 0) {
-            for (int i = 0; i < nums2.length; i++) {
+        while (m>0 &&n>0) {
+            int index = m+n-1;
+            if (nums1[m-1]>nums2[n-1]) {
+                nums1[index] = nums1[m-1];
+                m--;
+            }else
+            {
+                nums1[index] = nums2[n-1];
+                n--;
+            }
+        }
+        if (n>0) {
+            for (int i = n-1; i >=0; i--) {
                 nums1[i] = nums2[i];
             }
-            return;
-        }
-        for (int i = 0; i < n; i++) { //nums2
-            for (int j = 0; j < m; j++) { //nums1
-                if (nums1[j]>nums2[i]) { //找到nums1里第一个大于nums2的元素                    
-                    moveItem(nums1, j ,m);//从下标j开始后面的元素往后挪一位。
-                    nums1[j] = nums2[i]; //将j处的元素替换
-                    m++;//nums1 可用长度+1
-                    break;
-                }else if (j+1 == m) { //对比到末尾都未符合条件
-                    nums1[j+1] = nums2[i]; //将数字插入到末尾
-                    m++;
-                    break;
-                } 
-            }
-        }
-    }
-
-    public void moveItem(int[] nums,int index,int length) {
-        for (int i = length; i > index; i--) {
-            nums[i] = nums[i-1];
         }
     }
 }
